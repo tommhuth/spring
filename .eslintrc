@@ -1,0 +1,55 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true
+    }, 
+    "parser": "babel-eslint",
+    "extends": ["eslint:recommended"],
+    "parserOptions": {
+        "ecmaVersion": 9,
+        "sourceType": "module"
+    },
+    "rules": {
+        "padding-line-between-statements": [
+            "error",
+            { "blankLine": "always", "prev": "*", "next": "return" },
+            { "blankLine": "always", "prev": ["const", "let", "var", "import"], "next": "*"},
+            { "blankLine": "always", "prev": "*", "next": ["for", "switch", "if", "try"]},
+            { "blankLine": "always", "prev": "*", "next": "export"},
+            { "blankLine": "always", "prev": "*", "next": "function"},
+            { "blankLine": "any", "prev": ["const", "let", "var"], "next": ["const", "let", "var"]},
+            { "blankLine": "any", "prev": ["import"], "next": ["import"]},
+            { "blankLine": "any", "prev": ["export"], "next": ["export"]}
+        ],
+        "no-unused-vars": [
+            "error",
+            {
+                "argsIgnorePattern": "^_",
+                "varsIgnorePattern": "^_"
+            }
+        ],
+        "indent": [
+            "error",
+            4,
+            {
+                "SwitchCase": 1
+            }
+        ],
+        "eol-last": [
+            "error",
+            "never"
+        ],
+        "quotes": [
+            "error",
+            "double"
+        ],
+        "semi": [
+            "error",
+            "never"
+        ]
+    },
+    "plugins": [
+        "babel"
+    ]
+}
