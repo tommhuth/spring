@@ -1,25 +1,25 @@
 {
-  "name": "@huth/spring",
-  "version": "1.0.0",
-  "description": "Barebones spring animation",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://tommhuth@github.com/tommhuth/spring.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/tommhuth/spring/issues"
-  },
-  "homepage": "https://github.com/tommhuth/spring#readme",
-  "dependencies": { 
-    "babel-eslint": "^10.1.0",
-    "core-js": "^3.9.0",
-    "eslint": "^7.20.0",
-    "eslint-plugin-babel": "^5.3.0"
-  }
+    "name": "@huth/spring",
+    "version": "1.0.0",
+    "description": "Barebones spring animation",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://tommhuth@github.com/tommhuth/spring.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/tommhuth/spring/issues"
+    },
+    "homepage": "https://github.com/tommhuth/spring#readme",
+    "dependencies": {
+        "babel-eslint": "^10.1.0",
+        "core-js": "^3.9.0",
+        "eslint": "^7.20.0",
+        "eslint-plugin-babel": "^5.3.0"
+    }
 }
