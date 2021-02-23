@@ -1,5 +1,5 @@
 # spring
-Barebones spring animation, based heavily  on [Rachel Smith post](https://codepen.io/rachsmith/post/hack-physics-and-javascript-part-3-springs-and-some-other-things), with some inspiration from [Wobble](https://github.com/skevy/wobble) and [boing.js](https://gist.github.com/gordonbrander/3ca226b7e9b79ca03f5c). This package uses ES6+ syntax, including class properties, you might want to run it through Babel first depending on your target browsers.
+Barebones spring animation, based heavily  on [Rachel Smith's post](https://codepen.io/rachsmith/post/hack-physics-and-javascript-part-3-springs-and-some-other-things), with some inspiration from [Wobble](https://github.com/skevy/wobble) and [boing.js](https://gist.github.com/gordonbrander/3ca226b7e9b79ca03f5c). This package uses ES6+ syntax, including class properties, you might want to run it through Babel first depending on your target browsers.
 
 
 1. `npm install @huth/spring`
