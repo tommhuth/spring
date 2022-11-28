@@ -1,35 +1,33 @@
-// heavly based on https://codepen.io/rachsmith/post/hack-physics-and-javascript-part-3-springs-and-some-other-things
+// based on https://codepen.io/rachsmith/post/hack-physics-and-javascript-part-3-springs-and-some-other-things
 // and inspired by https://github.com/skevy/wobble and https://gist.github.com/gordonbrander/3ca226b7e9b79ca03f5c
-export default class Spring { 
+// and https://burakkanber.com/blog/physics-in-javascript-car-suspension-part-1-spring-mass-damper/
+export default class Spring {
     target = 0
     current = 0
     stiffness = 0
     damping = 0
     mass = 0
+    delta = 0
     running = false
     velocity = 0
     acceleration = 0
-    rid
+    lastFrameTime
+    rafId
 
     constructor({
-        from = 0,
-        to,
         stiffness = 300,
         damping = 70,
-        mass = 10
-    }) {
-        this.target = to
-        this.current = from
+        mass = 10,
+        delta = .01
+    } = {}) {
         this.stiffness = stiffness
         this.damping = damping
+        this.delta = delta
         this.mass = mass
 
         this.step()
-    } 
-
-    get() {
-        return this.current
     }
+ 
     set(value, fastForward = false) {
         this.target = value
 
@@ -38,36 +36,37 @@ export default class Spring {
         } else if (!this.running) {
             this.step()
         }
-    }    
+    }
     stop() {
-        cancelAnimationFrame(this.rid)
+        cancelAnimationFrame(this.rafId)
     }
     start() {
         this.step()
     }
     step() {
         if (!this.isAtTarget()) {
-            this.running = true
-            this.advance()
+            let delta = this.lastFrameTime ? Math.min(Math.max((Date.now() - this.lastFrameTime) / 1000, 1 / 120), 1 / 30) : 1 / 60
 
-            this.rid = requestAnimationFrame(() => this.step())
+            this.running = true
+            this.advance(delta)
+            this.lastFrameTime = Date.now()
+
+            this.rafId = requestAnimationFrame(() => this.step())
         } else {
             this.current = this.target
             this.running = false
         }
     }
-    advance() {
-        const t = 1 / 30 // hhmmm, faster?
-
+    advance(delta) {
         // spring & damper from k (stiffness) and b (damping constant)
-        const spring = -this.stiffness * (this.current - this.target)
+        const stiffness = -this.stiffness * (this.current - this.target)
         const damper = -this.damping * this.velocity
 
-        this.acceleration = (spring + damper) / this.mass
-        this.velocity += this.acceleration * t
-        this.current += this.velocity * t
+        this.acceleration = (stiffness + damper) / this.mass
+        this.velocity += this.acceleration * delta
+        this.current += this.velocity * delta 
     }
     isAtTarget() {
-        return Math.abs(this.target - this.current) < .01 && Math.abs(this.velocity) <= .001
+        return Math.abs(this.target - this.current) < this.delta && Math.abs(this.velocity) <= this.delta
     }
 }
